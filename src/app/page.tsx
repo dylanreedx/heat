@@ -3,6 +3,7 @@ import MapListItem from '@/components/map-list-item';
 import {Button} from '@/components/ui/button';
 import {getHeatMapDetails, getMapDaysForHeatMap} from '@/lib/calendar';
 import {getUserMaps} from '@/lib/queries';
+import {SignIn} from '@clerk/nextjs';
 import {currentUser} from '@clerk/nextjs/server';
 import {eq} from 'drizzle-orm';
 import Link from 'next/link';
@@ -83,12 +84,16 @@ const mockActivities = [
 
 export default async function Home() {
   const user = await currentUser();
-  if (!user) {
-    return <div>Not logged in</div>;
+  if (!user || !user.id) {
+    return (
+      <div className='grid place-items-center min-h-screen'>
+        <SignIn />
+      </div>
+    );
   }
   const maps = await getUserMaps(user);
-  const mapDays = await getMapDaysForHeatMap(maps[0].id, user.id);
-  const heatMapDetails = await getHeatMapDetails(maps[0].id);
+  const mapDays = await getMapDaysForHeatMap(maps[0].id, user?.id);
+  const heatMapDetails = await getHeatMapDetails(maps[0]?.id);
   console.log(mapDays);
 
   return (
