@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1713895747535,
+      "tag": "0000_worried_strong_guy",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1713964400010,
+      "tag": "0001_groovy_karnak",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1713964655036,
+      "tag": "0002_fancy_star_brand",
+      "breakpoints": true
+    }
+  ]
+}

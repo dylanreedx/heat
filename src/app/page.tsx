@@ -1,5 +1,6 @@
 'use client';
 import Calendar from '@/components/calendar';
+import MapListItem from '@/components/map-list-item';
 import {Button} from '@/components/ui/button';
 import React, {useMemo} from 'react';
 
@@ -88,43 +89,9 @@ export default function Home() {
         />
       </section>
       <section>
-        <ul className='flex flex-col gap-2'>
-          <li className='bg-muted-foreground flex overflow-hidden items-center rounded-2xl'>
-            <div className='w-24 aspect-square p-2'>
-              <div className='aspect-square rounded-xl bg-foreground/10'></div>
-            </div>
-            <div className='flex justify-between items-center w-full mx-6'>
-              <div>
-                <h3 className='text-xl'>Leetcode</h3>
-                <p className='text-foreground/50'>Activies logged: 53</p>
-              </div>
-              <Button>View</Button>
-            </div>
-          </li>
-          <li className='bg-muted-foreground flex overflow-hidden items-center rounded-2xl'>
-            <div className='w-24 aspect-square p-2'>
-              <div className='aspect-square rounded-xl bg-foreground/10'></div>
-            </div>
-            <div className='flex justify-between items-center w-full mx-6'>
-              <div>
-                <h3 className='text-xl'>Protein Goal</h3>
-                <p className='text-foreground/50'>Activies logged: 330</p>
-              </div>
-              <Button>View</Button>
-            </div>
-          </li>
-          <li className='bg-muted-foreground flex overflow-hidden items-center rounded-2xl'>
-            <div className='w-24 aspect-square p-2'>
-              <div className='aspect-square rounded-xl bg-foreground/10'></div>
-            </div>
-            <div className='flex justify-between items-center w-full mx-6'>
-              <div>
-                <h3 className='text-xl'>Water Goal</h3>
-                <p className='text-foreground/50'>Activies logged: 330</p>
-              </div>
-              <Button>View</Button>
-            </div>
-          </li>
+        <ul className='flex gap-2'>
+          <MapListItem />
+          <MapListItem />
         </ul>
       </section>
     </main>
