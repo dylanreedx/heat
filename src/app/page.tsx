@@ -92,14 +92,14 @@ export default async function Home() {
     );
   }
   const maps = await getUserMaps(user);
-  const mapDays = await getMapDaysForHeatMap(maps[0].id, user?.id);
+  const mapDays = await getMapDaysForHeatMap(maps[0]?.id, user?.id);
   const heatMapDetails = await getHeatMapDetails(maps[0]?.id);
   console.log(mapDays);
 
   return (
     <main className='max-w-2xl mx-auto'>
       <Button>
-        <Link href={`/log/${maps[0].id}`}>Log Activity</Link>
+        <Link href={`/log/${maps[0]?.id}`}>Log Activity</Link>
       </Button>
       <section className='p-4'>
         <Calendar initialYear={2024} initialMonth={3} activities={mapDays} />
