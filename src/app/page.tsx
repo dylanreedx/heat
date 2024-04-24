@@ -1,8 +1,11 @@
-'use client';
 import Calendar from '@/components/calendar';
 import MapListItem from '@/components/map-list-item';
 import {Button} from '@/components/ui/button';
-import React, {useMemo} from 'react';
+import {getHeatMapDetails, getMapDaysForHeatMap} from '@/lib/calendar';
+import {getUserMaps} from '@/lib/queries';
+import {currentUser} from '@clerk/nextjs/server';
+import {eq} from 'drizzle-orm';
+import Link from 'next/link';
 
 const mockActivities = [
   {
@@ -78,15 +81,23 @@ const mockActivities = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+  if (!user) {
+    return <div>Not logged in</div>;
+  }
+  const maps = await getUserMaps(user);
+  const mapDays = await getMapDaysForHeatMap(maps[0].id, user.id);
+  const heatMapDetails = await getHeatMapDetails(maps[0].id);
+  console.log(mapDays);
+
   return (
     <main className='max-w-2xl mx-auto'>
+      <Button>
+        <Link href={`/log/${maps[0].id}`}>Log Activity</Link>
+      </Button>
       <section className='p-4'>
-        <Calendar
-          initialYear={2024}
-          initialMonth={3}
-          activities={mockActivities}
-        />
+        <Calendar initialYear={2024} initialMonth={3} activities={mapDays} />
       </section>
       <section>
         <ul className='flex gap-2'>

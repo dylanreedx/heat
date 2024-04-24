@@ -3,8 +3,12 @@ export interface Activity {
   activity: string;
   notes: string;
 }
-
-export interface CalendarDay {
+export type CalendarDayData = {
+  id: string | null;
   date: string;
-  activity: Activity | null;
-}
+  activity: string | null;
+  notes: string | null;
+  userId: string | null;
+  heatMapId: string;
+  createdAt: string;
+};
