@@ -3,7 +3,7 @@ import MapListItem from '@/components/map-list-item';
 import {Button} from '@/components/ui/button';
 import {getHeatMapDetails, getMapDaysForHeatMap} from '@/lib/calendar';
 import {getUserMaps} from '@/lib/queries';
-import {SignIn} from '@clerk/nextjs';
+import {SignInButton} from '@clerk/nextjs';
 import {currentUser} from '@clerk/nextjs/server';
 import {eq} from 'drizzle-orm';
 import Link from 'next/link';
@@ -87,7 +87,7 @@ export default async function Home() {
   if (!user || !user.id) {
     return (
       <div className='grid place-items-center min-h-screen'>
-        <SignIn />
+        <SignInButton />
       </div>
     );
   }
